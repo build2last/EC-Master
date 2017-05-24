@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<title>画一个树图(Tree)</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<style>
+.node circle {
+stroke: steelblue;
+stroke-width: 1px;
+}
+.node {
+font: 12px sans-serif;
+}
+.link {
+fill: none;
+stroke: #ccc;
+stroke-width: 1px;
+}
+</style>
+<body>
+<script type="text/javascript">
+//图像区域大小
+var w = 960;
+var h = 800;
+//定义一个Tree对象
+var tree = d3.layout.tree()
+.size([w,h])
+.separation(function(a,b) { return a.parent == b.parent ? 1 : 2;});
+//定义布局方向
+var diagonal = d3.svg.diagonal()
+.projection(function(d) { return [d.y, d.x]; });
+//新建画布
+var svg = d3.select("body").append("svg")
+.attr("width", w)
+.attr("height", h)
+.append("g");
+//根据JSON数据生成树
+d3.json("/api/aspect-analyse/query/?plat=jd&num=100&bycate=1&catename=JD~%E7%94%B5%E8%84%91,%E5%8A%9E%E5%85%AC~%E7%94%B5%E8%84%91%E6%95%B4%E6%9C%BA~%E7%AC%94%E8%AE%B0%E6%9C%AC", function(error, data) {
+//根据数据生成nodes集合
+var nodes = tree.nodes(data);
+//获取node集合的关系集合
+var links = tree.links(nodes);
+//为关系集合设置贝塞尔曲线连接
+var link=svg.selectAll(".link")
+.data(links)
+.enter()
+.append("path")
+.attr("class", "link")
+.attr("d",diagonal);
+//根据node集合生成节点
+var node = svg.selectAll(".node")
+.data(nodes)
+.enter()
+.append("g")
+.attr("class", "node")
+.attr("transform", function(d){ return "translate("+d.y+"," + d.x + ")";});
+//为节点添加圆形标记,如果有子节点为红色，否则绿色
+node.append("circle")
+.attr("fill",function(d){return d.children==null?"#0F0":"#F00";})
+.attr("r", function(d){return d.children==null?5:d.children.length+5;});
+//为节点添加说明文字
+node.append("text")
+.attr("dx", function(d){return d.children==null?7:d.children.length+5+2;})
+.attr("dy", ".4em")
+.text(function(d){return d.name;});
+});
+</script>
+</body>
+</html>
