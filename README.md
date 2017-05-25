@@ -1,9 +1,7 @@
 ﻿EC-Master 电商爬虫与观点挖掘
 ====
 
-**`Windows CPU`**
-
-![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-win-cmake-py)
+**`Windows 10`**
 
 
 Copyright 2017 Liu Kun, NUST-CS2013
