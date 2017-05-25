@@ -13,7 +13,7 @@ def test_dataparser_func():
     jsonToDataBase.load_json_from_dir_to_mdb(json_path)
 
 def main():
-    test_category_func()
+    # test_category_func()
     test_dataparser_func()
 
 if __name__ == '__main__':

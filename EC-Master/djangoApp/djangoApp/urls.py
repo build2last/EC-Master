@@ -22,7 +22,7 @@ from djangoApp import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home),
-    url(r'^aspect-analyse/show/$', views.aspect_display),
+    url(r'^show/$', views.aspect_display),
     url(r'^api/aspect-analyse/query/$', views.get_aspect_analyse_json),
     url( r'^static/(?P<path>.*)$', django.views.static.serve, { 'document_root': settings.STATIC_FILES_DIRS }), 
 ]
