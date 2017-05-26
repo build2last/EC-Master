@@ -99,8 +99,8 @@ def extract_comment_of_jd(json_path):
     platform = "JD"
     try:
         with open(json_path, "rb") as f:
-            # 京东的json文本需要清洗后才能用python 的 json正常导入获取python对象
-            content = f.read().decode("utf-8")
+            # 京东的json文本需要清洗后才能用json.loads()正常导入获取python对象
+            content = f.read().decode("GBK")
             pattern = re.compile("<div>.*?<div>", re.S)
             content = re.sub(pattern, "", content)
             revs = json.loads(content.replace("\\","").replace("\r",""))
