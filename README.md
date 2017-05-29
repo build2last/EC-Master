@@ -3,6 +3,9 @@
 
 **`Windows 10`**
 
+[![](https://img.shields.io/badge/python-3.4-green.svg)](https://www.python.org/download/releases/3.4.0/) [![](https://img.shields.io/badge/python-3.5-green.svg)](https://www.python.org/downloads/release/python-352/)
+[![](https://img.shields.io/badge/python-3.6-green.svg)](https://www.python.org/downloads/release/python-360/) 
+[![](http://www.gnu.org/graphics/gplv3-88x31.png)](https://github.com/build2last/EC-Master/blob/master/Licence)
 
 Copyright 2017 Liu Kun, NUST-CS2013
 
