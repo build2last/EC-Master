@@ -24,7 +24,8 @@ a Python3 project
 
 2. 修改 settings.py 中参数
 
-3. 用某种手段将电商网站首页 HTML 放到 Category/HomePageParser 目录下并重命名
+3. 用某种手段将电商网站首页 HTML 内容放到 Category/HomePageParser 目录下并重命名
+> 比如在浏览器查看网页源代码
 
 4. 凭借 django 的ORM在数据库中建立表格: 执行命令
 > python manage.py makemigrations
